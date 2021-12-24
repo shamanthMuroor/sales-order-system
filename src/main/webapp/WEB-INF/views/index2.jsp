@@ -7,7 +7,6 @@
 		<%@ include file="./navbar.jsp"%>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<%@page isELIgnored="false"%>
-		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sales Order System</title>
     </head>
@@ -22,14 +21,14 @@
 			</div>
 		</div>
 		
-		<form:form action="payment" method="post" modelAttribute="orderDetailsModel">
+		<form action="addorderdetails" method="post">
 		<div class="row">
 			<div class="col">
 				<div class="card card-primary p-3" style="height: 100%">
 					<div class="card-header">
 						<i class="fa fa-product-hunt"></i> Order Details
 					</div>
-					<div class="card-body"> 
+					<div class="card-body">
 						<div class="form-group">
 							<label for="Customer Name">Customer Name:</label> 
 							<select name="cusname" class="form-control">
@@ -50,6 +49,10 @@
 							<label for="createDate">Order Date:</label> 
 							<input name="createDate" type="date" class="form-control" id="createDate">
 						</div>
+						<div class="form-group">
+							<label for="qty">Quantity:</label> 
+								<input name="qty" type="text" class="form-control" id="qty" placeholder="Enter Quantity" required>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -57,10 +60,6 @@
 				<div class="card card-primary p-3" style="height: 100%">
 					<div class="card-header"><i class="fa fa-sellsy"></i> Payment Details</div>
 					<div class="card-body">
-						<div class="form-group">
-							<label for="qty">Quantity:</label> 
-								<input name="qty" type="text" class="form-control" id="qty" placeholder="Enter Quantity" required>
-						</div>
 						<div class="form-group">
 							<label for="payMode">Payment Method:</label>
 							<select name="payMode" class="form-control" id="payMode">
@@ -71,8 +70,15 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="payStatus">Payment status:</label>
-							<input name="payStatus" type="text" class="form-control" id="payStatus" value="Pending" readonly>
+							<label for="payStatus">Payment status:</label> 
+							<select name="payStatus" class="form-control" id="payStatus">
+								<option value="completed">Completed</option>
+								<option value="pending">Not Completed</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="amount">Total Amount:</label> 
+							<input readonly name="amount" type="number" class="form-control" id="amount" value="1">
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-success">
@@ -83,7 +89,7 @@
 				</div>
 			</div>
 		</div>
-		</form:form>
+		</form>
 
 
 	</div>

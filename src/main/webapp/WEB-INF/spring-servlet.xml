@@ -53,6 +53,7 @@
 			 	<value>salesordersystem.model.CustomerModel</value> 
 			 	<value>salesordersystem.model.ItemModel</value> 
 			 	<value>salesordersystem.model.OrderDetailsModel</value> 
+			 	<value>salesordersystem.model.ChequeModel</value> 
 			</list>
 		</property>
 	</bean>

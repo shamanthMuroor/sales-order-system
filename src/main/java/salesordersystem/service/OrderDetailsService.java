@@ -21,26 +21,26 @@ public class OrderDetailsService {
 	public void insertOrderDetails(OrderDetailsModel orderDetailsModel) {
 		this.hibernateTemplate.saveOrUpdate(orderDetailsModel);
 	}
-//
-//	// get single orderDetails
-//	@Transactional
-//	public OrderDetailsModel getSingleOrderDetails(int orderDetailsId) {
-//		return this.hibernateTemplate.get(OrderDetailsModel.class, orderDetailsId);
-//	}
-//	
-	// get all orderDetailss
+
+	// get single orderDetails
+	@Transactional
+	public OrderDetailsModel getSingleOrderDetails(int orderDetailsId) {
+		return this.hibernateTemplate.get(OrderDetailsModel.class, orderDetailsId);
+	}
+
+	// get all orderDetails
 	@Transactional
 	public List<OrderDetailsModel> getOrderDetailsList() {
 		List<OrderDetailsModel> orderDetailsModels = this.hibernateTemplate.loadAll(OrderDetailsModel.class);
 		return orderDetailsModels;
 	}
-//	
-//	// delete orderDetails by id
-//	@Transactional
-//	public void deleteOrderDetails(int orderDetailsId) {
-//		OrderDetailsModel orderDetailsModel = this.hibernateTemplate.load(OrderDetailsModel.class, orderDetailsId);
-//		this.hibernateTemplate.delete(orderDetailsModel);
-//	}
+	
+	// delete orderDetails by id
+	@Transactional
+	public void deleteOrderDetails(int orderDetailsId) {
+		OrderDetailsModel orderDetailsModel = this.hibernateTemplate.load(OrderDetailsModel.class, orderDetailsId);
+		this.hibernateTemplate.delete(orderDetailsModel);
+	}
 	
 	
 }

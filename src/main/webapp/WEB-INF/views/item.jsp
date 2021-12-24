@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<%@ include file="./navbar.jsp"%>
-<%@include file="./links.jsp"%>
-<title>Sales Order System</title>
+	<meta charset="ISO-8859-1">
+	<%@ include file="./navbar.jsp"%>
+	<%@include file="./links.jsp"%>
+	<title>Sales Order System</title>
 </head>
 <body>
 	<div class="container ">
@@ -51,7 +51,7 @@
 							<div class="form-group">
 								<label for="itemId">Item ID: </label> 
 									<input value="${item.itemId}" name="itemId" type="text" class="form-control" id="itemId"
-									<c:if test="${item.itemId == null}">disabled="1"</c:if>" readonly="1">
+									<c:if test="${item.itemId == null}">disabled="1"</c:if>" readonly>
 							</div>	
 							<div class="form-group">
 								<label for="itemName">Item Name:</label> 

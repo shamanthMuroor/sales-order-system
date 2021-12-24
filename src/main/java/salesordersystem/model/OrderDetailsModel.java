@@ -8,9 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class OrderDetailsModel implements Serializable{
@@ -19,13 +20,14 @@ public class OrderDetailsModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
-	private CustomerModel customer;
-	private ItemModel item;
+	private String cusname;
+	private String itemName;
 	private int qty;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dateCreated;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
+	private Date createDate;
 	private String payMode;
 	private String payStatus;
+	private float amount;
 	
 	public int getOrderId() {
 		return orderId;
@@ -33,17 +35,17 @@ public class OrderDetailsModel implements Serializable{
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public CustomerModel getCustomer() {
-		return customer;
+	public String getCusname() {
+		return cusname;
 	}
-	public void setCustomer(CustomerModel customer) {
-		this.customer = customer;
+	public void setCusname(String cusname) {
+		this.cusname = cusname;
 	}
-	public ItemModel getItem() {
-		return item;
+	public String getItemName() {
+		return itemName;
 	}
-	public void setItem(ItemModel item) {
-		this.item = item;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 	public int getQty() {
 		return qty;
@@ -51,11 +53,11 @@ public class OrderDetailsModel implements Serializable{
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getCreateDate() {
+		return createDate;
 	}
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	public String getPayMode() {
 		return payMode;
@@ -69,13 +71,17 @@ public class OrderDetailsModel implements Serializable{
 	public void setPayStatus(String payStatus) {
 		this.payStatus = payStatus;
 	}
+	public float getAmount() {
+		return amount;
+	}
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
 	@Override
 	public String toString() {
-		return "OrderDetailsModel [orderId=" + orderId + ", customer=" + customer + ", item=" + item + ", qty=" + qty
-				+ ", dateCreated=" + dateCreated + ", payMode=" + payMode + ", payStatus=" + payStatus + "]";
+		return "OrderDetailsModel [orderId=" + orderId + ", cusname=" + cusname + ", itemName=" + itemName + ", qty="
+				+ qty + ", createDate=" + createDate + ", payMode=" + payMode + ", payStatus=" + payStatus + ", amount="
+				+ amount + "]";
 	}
-	
-
-	
 	
 }

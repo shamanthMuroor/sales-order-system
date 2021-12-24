@@ -28,6 +28,11 @@ public class CustomerService {
 		return this.hibernateTemplate.get(CustomerModel.class, cid);
 	}
 	
+	@Transactional
+	public CustomerModel getSingleCustomer(String cusname) {
+		return this.hibernateTemplate.get(CustomerModel.class, cusname);
+	}
+	
 	// get all customers
 	@Transactional
 	public List<CustomerModel> getCustomerList() {
