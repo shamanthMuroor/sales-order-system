@@ -14,14 +14,19 @@
     <body>
 
 	<div class="container">
-		<div class="row">
+		<!--  <div class="row my-3 p-2">
 			<div class="col-md-12">
 				<h1 align="center">
-					<a href="<%= request.getContextPath()%>/">Sales Order System</a>
+					<a href="http://localhost:8080/salesordersystem/">Sales Order System</a>
 				</h1>
+			</div> 
+		</div> -->
+		<br>
+		<div class="row" >
+			<div class="col text-center">
+				<h4>Create a New Order</h4>
 			</div>
 		</div>
-		
 		<form:form action="payment" method="post" modelAttribute="orderDetailsModel">
 		<div class="row">
 			<div class="col">
@@ -59,12 +64,12 @@
 					<div class="card-body">
 						<div class="form-group">
 							<label for="qty">Quantity:</label> 
-								<input name="qty" type="text" class="form-control" id="qty" placeholder="Enter Quantity" required>
+								<input name="qty" type="number" class="form-control" id="qty" placeholder="Enter Quantity" required>
 						</div>
 						<div class="form-group">
 							<label for="payMode">Payment Method:</label>
 							<select name="payMode" class="form-control" id="payMode">
-								<option value="cod">Cash on delivery</option>
+								<option value="cod">Cash on Delivery</option>
 								<option value="cheque">Cheque</option>
 								<option value="wiretransfer">WireTransfer</option>
 								<option value="credit">Credit Card</option>
@@ -74,9 +79,10 @@
 							<label for="payStatus">Payment status:</label>
 							<input name="payStatus" type="text" class="form-control" id="payStatus" value="Pending" readonly>
 						</div>
-						<div class="form-group">
+						<hr>
+						<div class="form-group text-right">
 							<button type="submit" class="btn btn-success">
-								<i class="fa fa-cart-plus"></i> Payment
+								<i class="fa fa-cart-plus"></i>Go to Payment
 							</button>
 						</div>
 					</div>
@@ -91,3 +97,6 @@
 
 </body>
 </html>
+
+
+<!-- Add delivery status: delivered, on the way --etc -->

@@ -21,11 +21,13 @@
 				<thead>
 					<tr>
 						<th>
-							<a href="http://localhost:8080/salesordersystem/" class="btn btn-outline-danger">Back</a>
+							<a href="http://localhost:8080/salesordersystem/" class="btn btn-outline-danger">
+								<i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back
+							</a>
 						</th>
 						<th colspan="8" style="text-align: center;">
 							<h2>
-								<i class="fa fa-users"></i> Order details
+								Order details
 							</h2>
 						</th>
 					</tr>
@@ -34,7 +36,7 @@
 						<th>Customer Name</th>
 						<th>Item Name</th>
 						<th>Quantity</th>
-						<th>Date Created</th>
+						<th>Order Created</th>
 						<th>Payment Mode</th>
 						<th>Payment Status</th>
 						<th>Action</th>
@@ -53,7 +55,7 @@
 							<td>
 								<a
 								onclick="return confirm('Are you want to delete this item?')"
-								href="<%= request.getContextPath()%>/deleteorderdetails/${row.orderId}"
+								href="http://localhost:8080/salesordersystem/deleteorderdetails/${row.orderId}"
 								class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
 							</td>
 						</tr>

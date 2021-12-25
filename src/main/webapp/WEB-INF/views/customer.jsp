@@ -13,46 +13,28 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-12">
 				<h1 align="center">
 					<a href="<%=request.getContextPath()%>/">Sales Order System</a>
 				</h1>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 message">
-				<c:if test="${contact != null}">
-					<div class="alert alert-success alert-dismissable fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Success!</strong> ${sm}
-					</div>
-
-				</c:if>
-				<c:if test="${em != null}">
-					<div class="alert alert-danger alert-dismissable fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Error!</strong> ${em}
-					</div>
-				</c:if>
-			</div>
-		</div>
-
-		<div class="row">
+		</div> -->
+		<div class="row mt-3">
 			<div class="col-md-4">
-				<div class="card card-primary">
-					<div class="card-heading">
+				<div class="card card-primary p-2">
+					<div class="card-heading p-2">
 						<h3 align="center">
 							<i class="fa fa-user-plus"></i> Register Customer
 						</h3>
 					</div>
 					<div class="card-body">
-						<form action="<%=request.getContextPath()%>/addcustomer" method="post">
+						<form action="http://localhost:8080/salesordersystem/addcustomer" method="post">
 							<div class="form-group">
 								<label for="cid">Customer ID: </label> <input
 									value="${customer.cid}" name="cid" type="text"
 									class="form-control" id="cid"
-									<c:if test="${customer.cid == null}">disabled="1"</c:if>" readonly="1">
+									<c:if test="${customer.cid == null}">disabled="1"</c:if> readonly>
 							</div>
 	
 							<div class="form-group">
@@ -73,20 +55,22 @@
 									type="text" class="form-control" id="deliveryAddress">
 							</div>
 	
-							<c:if test="${customer.cid != null}">
-								<button type="submit" class="btn btn-warning">
-									<i class="fa fa-edit"></i> Update
-								</button>
-								<a href="<%=request.getContextPath()%>/customer"
-									class="btn btn-primary pull-right"><i
-									class="fa fa-user-plus"></i> New</a>
-							</c:if>
-	
-							<c:if test="${customer.cid == null}">
-								<button type="submit" class="btn btn-success">
-									<i class="fa fa-send"></i> Submit
-								</button>
-							</c:if>
+							<div class="form-group text-right">
+								<c:if test="${customer.cid != null}">
+									<button type="submit" class="btn btn-warning">
+										<i class="fa fa-edit"></i> Update
+									</button>
+									<a href="http://localhost:8080/salesordersystem/customer"
+										class="btn btn-primary pull-right"><i
+										class="fa fa-user-plus"></i> New</a>
+								</c:if>
+		
+								<c:if test="${customer.cid == null}">
+									<button type="submit" class="btn btn-success">
+										<i class="fa fa-user-plus"></i> Register
+									</button>
+								</c:if>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -97,7 +81,7 @@
 					<thead>
 						<tr>
 							<th colspan="6" style="text-align: center;">
-								<h2><i class="fa fa-users"></i>Customer List</h2>
+								<h2><i class="fa fa-users"></i>  Customer List</h2>
 							</th>
 						</tr>
 						<tr>
@@ -115,11 +99,11 @@
 								<td>${row.cusname}</td>
 								<td>${row.contact}</td>
 								<td>${row.deliveryAddress}</td>
-								<td><a href="<%= request.getContextPath()%>/editcustomer/${row.cid}" 
+								<td><a href="http://localhost:8080/salesordersystem/editcustomer/${row.cid}" 
 									class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a></td>
 								<td><a
 									onclick="return confirm('Are you want to delete this item?')"
-									href="<%= request.getContextPath()%>/deletecustomer/${row.cid}"
+									href="http://localhost:8080/salesordersystem/deletecustomer/${row.cid}"
 									class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
 							</tr>
 						</c:forEach>

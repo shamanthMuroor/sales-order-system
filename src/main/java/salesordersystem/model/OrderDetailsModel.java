@@ -1,16 +1,13 @@
 package salesordersystem.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -23,7 +20,6 @@ public class OrderDetailsModel implements Serializable{
 	private String cusname;
 	private String itemName;
 	private int qty;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
 	private Date createDate;
 	private String payMode;
 	private String payStatus;

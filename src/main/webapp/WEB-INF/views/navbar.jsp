@@ -21,11 +21,15 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/salesordersystem/">Home <span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/salesordersystem/item">Add Item</a></li>
-				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/salesordersystem/customer">Register Customer</a></li>
-				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/salesordersystem/orderdetails">Order Details</a></li>
+				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/salesordersystem/item">Add-New-Item</a></li>
+				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/salesordersystem/customer">Register-Customer</a></li>
+				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/salesordersystem/orderdetails">Order-Details</a></li>
 			</ul>
 		</div>
+		
+		<span align="center">
+			<a href="http://localhost:8080/salesordersystem/" style="text-decoration: none;"><h1>Sales Order System</h1></a>
+		</span>
 	</nav>
 </body>
 </html>

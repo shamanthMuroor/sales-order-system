@@ -13,20 +13,12 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 align="center">
-					<a href="<%=request.getContextPath()%>/">Sales Order System</a>
-				</h1>
-			</div>
-		</div>
-
-		<div class="row">
+		<div class="row mt-3">
 			<div class="col">
-				<div class="card card-primary">
-					<div class="card-heading">
+				<div class="card card-primary p-2">
+					<div class="card-heading pt-2">
 						<h3 align="center">
-							<i class="fa fa-user-plus"></i> Payment Section
+							<i class="fa fa-shopping-cart"></i> Payment Section
 						</h3>
 					</div>
 					<div class="card-body">
@@ -53,28 +45,61 @@
 						    </tr>
 						    <tr>
 						        <th class="small text-muted pr-2" scope="row">Amount to be Paid:</th>
-						        <td>${orderDetailsModel.getQty() * amt}</td>
+						        <td>&#x20B9;${orderDetailsModel.getAmount()}</td>
 						    </tr>
-						</table><br><br>
-						<form action="<%=request.getContextPath()%>/transaction/${orderDetailsModel.getPayMode()}" method="post">
+						</table><br><hr><br>
+						<form action="http://localhost:8080/salesordersystem/transaction" method="post">
 							<c:if test="${orderDetailsModel.getPayMode() == 'cheque'}">
+								<h3 align="center">Cheque</h3><br><br>
 								<input name="orderId" type="text" id="orderId" value="${orderDetailsModel.getOrderId()}" hidden>
 								<div class="form-group">
 									<label for="chequeNo">Cheque Number: </label> 
 									<input name="chequeNo" type="text" class="form-control" id="chequeNo" required>
 								</div>
 								<div class="form-group">
-									<label for="bankID">bankID: </label> 
+									<label for="bankID">Bank ID: </label> 
+									<input name="bankID" type="text" class="form-control" id="bankID">
+								</div>
+							</c:if>
+							<c:if test="${orderDetailsModel.getPayMode() == 'wiretransfer'}">
+								<h3 align="center">Wire Transfer</h3><br><br>
+								<input name="orderId" type="text" id="orderId" value="${orderDetailsModel.getOrderId()}" hidden>
+								<div class="form-group">
+									<label for="bankID">Bank ID: </label> 
 									<input name="bankID" type="text" class="form-control" id="bankID">
 								</div>
 								<div class="form-group">
-									<label for="amount">Amount to be Paid: </label> 
-									<input name="amount" type="text" class="form-control" id="amount" value="${orderDetailsModel.getQty() * amt}" readonly>
+									<label for="bankName">Bank Name: </label> 
+									<input name="bankName" type="text" class="form-control" id="bankName" required>
 								</div>
 							</c:if>
-							<button type="submit" class="btn btn-info">
-								<i class="fa fa-send"></i> Pay
-							</button>
+							<c:if test="${orderDetailsModel.getPayMode() == 'credit'}">
+								<h3 align="center">
+									<i class="fa fa-credit-card" aria-hidden="true"></i>  Credit Card
+								</h3><br><br>
+								<input name="orderId" type="text" id="orderId" value="${orderDetailsModel.getOrderId()}" hidden>
+								<div class="form-group">
+									<label for="cardNumber">Credit Card Number: </label> 
+									<input name="cardNumber" type="text" class="form-control" id="cardNumber">
+								</div>
+								<div class="form-group">
+									<label for="cardType">Card Type: </label> 
+									<input name="cardType" type="text" class="form-control" id="cardType" required>
+								</div>
+								<div class="form-group">
+									<label for="expireDate">Expire Date: </label> 
+									<input name="expireDate" type="text" class="form-control" id="expireDate" required>
+								</div>
+							</c:if>
+							<div class="form-group">
+								<label for="amount">Amount to be Paid: </label> 
+								<input name="amount" type="number" step="0.01" class="form-control" id="amount" value="${orderDetailsModel.getAmount()}" readonly>
+							</div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-info">
+									<i class="fa fa-shopping-cart"></i> Pay
+								</button>
+							</div>
 						</form>
 					</div>
 				</div>

@@ -49,7 +49,6 @@ public class OrderDetailsController {
 		public String addOrderDetails(@ModelAttribute("orderDetailsModel") OrderDetailsModel orderDetailsModel, @RequestParam String cusname, @RequestParam String itemName, HttpServletRequest request, Model model) {
 			orderDetailsModel.setCusname(cusname);
 			orderDetailsModel.setItemName(itemName);
-			orderDetailsService.insertOrderDetails(orderDetailsModel);
 			List<ItemModel> item = itemService.getItemList();
 			float amt = 0;
 			for(ItemModel it : item) {
@@ -58,21 +57,10 @@ public class OrderDetailsController {
 					break;
 				}
 			}
-//			System.out.println("item contents: " + itemContent);
-//			RedirectView redirectView = new RedirectView();
-//			String s = orderDetailsModel.getPayMode();
-//			if(s.equals("cod")) {
-//				List<OrderDetailsModel> orderDetails = orderDetailsService.getOrderDetailsList();
-//				System.out.println("Order details: " + orderDetails);
-//				model.addAttribute("orderDetails", orderDetails);
-//				redirectView.setUrl(request.getContextPath() + "/orderdetails");
-//			}
-//			else {
-				model.addAttribute("orderDetailsModel", orderDetailsModel);
-				model.addAttribute("amt", amt);
-//				redirectView.setUrl(request.getContextPath() + "/payment");	
-//			}
-//			return redirectView;
+			orderDetailsModel.setAmount(orderDetailsModel.getQty() * amt);
+			orderDetailsService.insertOrderDetails(orderDetailsModel);
+			System.out.println(orderDetailsModel.getAmount());
+			model.addAttribute("orderDetailsModel", orderDetailsModel);
 			return "payment";
 		}
 		
@@ -85,14 +73,23 @@ public class OrderDetailsController {
 			return "orderdetails";
 		}
 
-		@RequestMapping(value = "/transaction/cheque", method=RequestMethod.POST)
+		
+		@RequestMapping(value = "/transaction", method=RequestMethod.POST)
 		public String payment(@ModelAttribute ChequeModel cheque, @RequestParam int orderId, Model model) {
-//			chequeService.insertCheque(cheque);
 			OrderDetailsModel odm = orderDetailsService.getSingleOrderDetails(orderId);
 			odm.setPayStatus("PAID");
 			orderDetailsService.insertOrderDetails(odm);
 			return "success";
 		}
+		
+//		@RequestMapping(value = "/transaction/cheque", method=RequestMethod.POST)
+//		public String payment(@ModelAttribute ChequeModel cheque, @RequestParam int orderId, Model model) {
+////			chequeService.insertCheque(cheque);
+//			OrderDetailsModel odm = orderDetailsService.getSingleOrderDetails(orderId);
+//			odm.setPayStatus("PAID");
+//			orderDetailsService.insertOrderDetails(odm);
+//			return "success";
+//		}
 
 		@RequestMapping(value = "/deleteorderdetails/{orderDetailsId}")
 		public RedirectView deleteHandler(@PathVariable("orderDetailsId") int orderDetailsId, HttpServletRequest request, Model model) {
